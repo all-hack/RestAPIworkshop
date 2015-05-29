@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>What's a JSON</title>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <style type="text/css">
+
+            .search-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:cadetblue; 
+                padding:15px;
+            }
+
+            .cat-img-style{
+                max-width:20%; 
+                max-height:150px; 
+                margin:10px; 
+                float:left;
+            }
+
+            .save-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:bisque; 
+                padding:15px;
+            }
+
+            .load-style{
+                font-size:30px;
+                margin-top:15px; 
+                background-color: wheat; 
+                padding:15px;
+            }
+
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar -->
+        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li ><a href="index.html">Find a cat</a></li>
+                        <li class="active" ><a href="jsonindex.html">What's a JSON</a></li>
+                        <li ><a href="jqueryindex.html">jQuery for your mental health</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron -->
+
+        <div class="jumbotron" style="padding-bottom:10px; margin-bottom: 10px;">
+            <div class="container" style="text-align:center;">
+                <h1>What's a JSON</h1>
+                <p>JSON aren't so bad!</p>
+            </div>
+        </div>
+
+        <div class="container">
+          <!-- Example row of columns -->
+            <div class="row" style="text-align:left; font-size:30px; padding:15px;">
+                <p>A JSON is a standardized method of representing data and it looks something like this</p>
+                <pre >
+{  "results": {
+        "firstKey": "This is a string",
+        "secondKey": "This is a number",
+        "thirdKey": ["element0", "element1", "element3"],
+        "question": "Do you get it?"
+    }
+}</pre>
+                <p>JSON are built in a "key": "value" format</p>
+                <p>But enough talking let's start breaking things!</p>
+            </div>
+
+            <div class="row search-style">
+                <div style="color: white;">
+                    <h1 style="text-align:center;">Playing with JSON</h2>
+                    <p>First we are going to learn how to deserialize a JSON</p>
+                    <p>Let's look at a real JSON, it's waiting for you in the console</p>
+                    <div style="text-align: left; background-color:black; width: 50%; padding: 10px;">
+                        <span id="string"></span><br>
+                        <span id="number"></span><br>
+                        <span id="array"></span><br>
+                        <span id="question"></span><br>
+                    </div>
+                </div>
+            </div>    
+            <script type="text/javascript">
+                var theString = "string cheese";
+                var theNumber = 42;
+                var theArray = ["0element", "1element", "2element"];
+                var theQuestion = "Did you figure it out?";
+
+
+                var lvl1JSON =   { "results": 
+                                    {
+                                        "firstKey": theString,
+                                        "secondKey": theNumber,
+                                        "thirdKey": theArray,
+                                        "question": theQuestion
+                                    } 
+                                };
+                console.log(lvl1JSON);
+
+            </script>
+
+            <div class="row save-style">
+                <div>
+                    <h1 style="text-align:center;">Stringify a JSON</h1>
+                    <p>Now were going to learn how to use an easy JSON function called stringify</p>
+                    <p>All it does is turn the JSON into a string for you, making it easy to send places</p>
+                    <p>We are going to use lvl1JSON for this.</p>
+                    <div style="text-align: left; background-color:black;  padding: 10px; color: white;">
+                        <span id="JSONstring"></span><br>
+                    </div>
+                </div>
+            </div>
+            
+            <script type="text/javascript">
+            </script>
+
+            <div class="row load-style">
+                <div id="load-here">
+                    <h1 style="text-align:center;">Parsing a JSON</h1>
+                    <p>Now we have our JSON in a string format! Can we access it like a normal JSON?</p>
+                    <p>We are going to use jsonString for this.</p>                    
+                    
+                </div>
+            </div>
+
+            <script type="text/javascript">
+            </script>
+
+            <hr>
+
+	</body>
+
+
+</html>
