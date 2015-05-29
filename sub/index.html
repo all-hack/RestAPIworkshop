@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Find a cat</title>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <style type="text/css">
+
+            .search-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:cadetblue; 
+                padding:15px;
+            }
+
+            .cat-img-style{
+                max-width:20%; 
+                max-height:150px; 
+                margin:10px; 
+                float:left;
+            }
+
+            .save-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:bisque; 
+                padding:15px;
+            }
+
+            .load-style{
+                font-size:30px;
+                margin-top:15px; 
+                background-color: wheat; 
+                padding:15px;
+            }
+
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar -->
+        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Find a cat</a></li>
+                        <li><a href="jsonindex.html">What's a JSON</a></li>
+                        <li><a href="jqueryindex.html">jQuery for your mental health</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron -->
+
+        <div class="jumbotron" style="padding-bottom:10px; margin-bottom: 10px;">
+            <div class="container" style="text-align:center;">
+                <h1>Find a Cat</h1>
+                <p>Scroll down to find the perfect cat!</p>
+            </div>
+        </div>
+
+        <div class="container">
+          <!-- Example row of columns -->
+            <div class="row" style="text-align:center; font-size:30px; padding:15px;">
+                <img id="img-goes-here" src="img/catHiding.jpg" style="width:90%; max-height: 440px; min-height:100px">
+                <br>
+            </div>
+
+            <div class="row search-style">
+                <div id="search-append-here">
+                    <input id="search-goes-here" type="text" name="search" placeholder=" Search for cats."></input>                
+                    <button onclick="getCats();">Search</button>
+                    <br>
+                </div>
+            </div>    
+
+            <script type="text/javascript">
+                function getCats(){
+
+                    // pieces of our URL // pieces of our URL // pieces of our URL // pieces of our URL 
+                    var urlFlikr = "https://api.flickr.com/services/rest/?";
+                    var flickrKey = "&api_key=4602629fbde21fd7d43b0409f3dd4bf1";
+                    var flickrFormat = "&format=json&nojsoncallback=1";
+                    var search = "method=flickr.photos.search";
+
+                    //grab the search bar element 
+                    var searchText = document.getElementById("search-goes-here");
+                    //get the value 
+                    var tags = "&tags="+ searchText.value;
+
+                    var tagMode = "&tag_mode=any";
+                    var safeSearch = "&safe_search=1";
+                    var perPage = 1;
+                    var perPageStr = "&per_page=" + perPage;
+                    var numPage = "&page=1";
+                    
+                    // our final URL                     
+                    var finalFlickrUrl = urlFlikr+search+flickrKey+tags+tagMode+safeSearch+perPageStr+numPage+flickrFormat;
+
+                    // error checking the input in the search bar 
+                    if (tags == "&tags=")
+                    {
+                        alert("Enter something to search hoperfully related to cats, after all we're all searching for something!");
+                    }
+                    else{
+                    
+                        // creates a XMLHttpRequest object
+                        var httpRequest = new XMLHttpRequest();
+                        // initializes the object with the request method, the url, and whether the call will be syncronous or not
+                        httpRequest.open("GET", finalFlickrUrl, true);    
+
+                        //stores a function to be called automatically each time the Ready state property changes 
+                        httpRequest.onreadystatechange = function() 
+                        {
+                            //checks to see if the ready state is 4 and the status is 200
+                            if (httpRequest.readyState == 4 && httpRequest.status == 200) 
+                            {
+                                // parses the json to be easy to work with 
+                                var data = JSON.parse(httpRequest.responseText);
+                                // grabs the #search-append-here element
+                                var searchDiv = document.getElementById("search-append-here");
+                                //adds the pictures to the div #search-append-here   
+
+                                for (var index = 0; index < perPage; index++)
+                                {
+                                    // retrieves a photo object from the json
+                                    var thePicture = data.photos.photo[index];                            
+                                    // puts the picture url together 
+                                    var thePictureUrl = "https://farm" + thePicture.farm + ".staticflickr.com/" + thePicture.server + "/" + thePicture.id + "_" + thePicture.secret + ".jpg";
+                                    // creates a img tag who's source is the the picture url 
+                                    var addPictureUrlToDiv = "<img src='" + thePictureUrl + "' class='cat-img-style'>"
+                                    // appends the div #search-append-here with the img 
+                                    searchDiv.innerHTML = searchDiv.innerHTML + addPictureUrlToDiv;
+                                    // adds the url of the img to our array of URLs 
+                                    arrayURL.push(thePictureUrl);
+                                }//end for loop 
+                            }//end if 
+                        }//end on readystatechange
+                    
+                    //actually sends the Http request object
+                    httpRequest.send();
+
+                    }//end else
+                }// end getCats()    
+            </script>
+
+            <div class="row save-style">
+                <div>
+                    <input id="save-under-this" type="text" name="SavePics" placeholder=" Give me a name!"></input>
+                    <button onclick="saveCats()">Save</button>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function saveCats(){
+
+                    //save the content of the id from the input field 
+                    var saveInputText = $("#save-under-this").val();
+                    //to save the error 
+                    var errorString = ""
+
+                    //error checking 
+                    if (saveInputText == ""){
+                        errorString = "you need to enter something to remember your cats!";
+                    }
+                    else{}
+                    //error checking 
+                    if (arrayURL.length <= 0){
+                        errorString = "You have no cats to save! Find some cats first!";
+                    }
+                    else{}
+                    
+                    //if the URL array is not empty and the saveInputText is not empty 
+                    if (arrayURL.length > 0 && saveInputText != ""){            
+
+                        //serialize the data into a JSON string
+                        var JsonOfCats = JSON.stringify({"img_url_array": arrayURL, "identifier": saveInputText});
+
+                        //create and send our ajax http request
+                        $.ajax({
+                            url: urlParse, //the url we are going to 
+                            type: "POST", // the request method
+                            headers:{ // headers for the service to identify the http request 
+                                "X-Parse-Application-Id" : "fmvfKGs5uw7C3CWxmi7Mw0BWFsFgMbgCoadGZpz9",
+                                "X-Parse-REST-API-Key" : "ODEZ6iQBapjH6fGpXu4ZY449rU1f85GJqscwIZqD",
+                                "Content-Type" : "application/json"
+                            },
+                            data: JsonOfCats, //the payload we are sending it 
+                            success: function(){ alert("Cats have been saved under the name: " + saveInputText ) }//,// what we do when it succeeds 
+                            //dataType: "json" // the type of data we expect back 
+                            });
+                        }
+                    //if the conditions aren't right print the error string 
+                    else{
+                        alert(errorString);
+                    }
+                }
+            </script>
+
+            <div class="row load-style">
+                <div id="load-here">
+                    <input id="load-from-this" type="text" name="LoadCats" placeholder=" What was my name?"></input>
+                    <button id="button3" onclick="getSavedCats()">Load</button>
+                    <br>
+                </div>
+            </div>
+          
+            <script type="text/javascript">
+
+                function getSavedCats(){
+                    //the load text 
+                    var loadId = $("#load-from-this").val();                
+
+                    //error checking 
+                    if (loadId == "")
+                    {
+                        alert("You need to enter a name to load!");
+                    }
+
+                    //our http request                    
+                    $.ajax({
+                        url: urlParse,  // url 
+                        type: "GET", // request method 
+                        headers:{ //hearders 
+                            "X-Parse-Application-Id" : "fmvfKGs5uw7C3CWxmi7Mw0BWFsFgMbgCoadGZpz9",
+                            "X-Parse-REST-API-Key" : "ODEZ6iQBapjH6fGpXu4ZY449rU1f85GJqscwIZqD",
+                            "Content-Type" : "application/json"
+                        },
+                        //if it succeeds 
+                        success: function(data){
+                            //array to store all of the loadids retrieved from parse 
+                            var arrayOfLoadIds = [];
+                            //array to hold all the urls of the picturs 
+                            var arrayToLoad = [];
+                        
+                            //itterates through for each data point 
+                            for (var i = 0; i < data.results.length; i++)
+                            {
+
+                                arrayOfLoadIds[i] = data.results[i].identifier;
+                                if (arrayOfLoadIds[i] == loadId)
+                                {
+                                    for(var j = 0; j < data.results[i].img_url_array.length; j++){
+                                        arrayToLoad.push(data.results[i].img_url_array[j]);
+                                    }
+
+                                }
+                                else{}
+                            }
+                            if (arrayToLoad.length > 0){
+                                for (var i = 0; i < arrayToLoad.length; i++)
+                                {
+                                    $("#load-here").append("<img src='" + arrayToLoad[i] + "' style='max-width:20%; margin:10px; float:left;'>");
+                                }
+                            }
+                        }                   
+                    });
+                }
+            </script>
+
+            <hr>
+
+
+    <script type="text/javascript">
+        // create the pars url 
+        var urlParse = "https://api.parse.com/1/classes/find_a_cat";
+        
+        //create array to keep track 
+        var arrayURL = [];
+        
+        //get cats ajax
+        /*$.ajax({
+            url: finalFlickrUrl,
+            type: "GET",                
+            success: function(data)
+            { 
+                for (var index = 0; index < perPage; index++)
+                {
+                    var thePicture = data.photos.photo[index];                            
+                        
+                    var thePictureUrl = "https://farm" + thePicture.farm + ".staticflickr.com/" + thePicture.server + "/" + thePicture.id + "_" + thePicture.secret + ".jpg";
+                            
+                    $("#search-append-here").append("<img src='" + thePictureUrl + "' style='max-width:20%; max-height:150px; margin:10px; float:left;'>");
+
+                    arrayURL.push(thePictureUrl);
+
+                }//end for loop 
+
+            },//end of success
+
+            dataType: "json"
+
+        });//end http request*/
+
+    </script>
+
+
+	</body>
+
+
+</html>
