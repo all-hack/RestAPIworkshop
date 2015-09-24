@@ -1,128 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Find a cat</title>
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <style type="text/css">
+<head>
+<meta charset="utf-8">
+<title>Putting API Fears and Troubles to REST</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link href='http://fonts.googleapis.com/css?family=Alegreya|Allerta' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/custom.style.restAPI.css"> 
+<link href="code-prettify-master/src/prettify.css" type="text/css" rel="stylesheet" />
 
-            .search-style{
-                font-size:30px; 
-                margin-top:15px; 
-                background-color:cadetblue; 
-                padding:15px;
-            }
-
-            .cat-img-style{
-                max-width:20%; 
-                max-height:150px; 
-                margin:10px; 
-                float:left;
-            }
-
-            .save-style{
-                font-size:30px; 
-                margin-top:15px; 
-                background-color:bisque; 
-                padding:15px;
-            }
-
-            .load-style{
-                font-size:30px;
-                margin-top:15px; 
-                background-color: wheat; 
-                padding:15px;
-            }
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.restAPI.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="code-prettify-master/src/prettify.js"></script>
 
 
-        </style>
+
+<style type="text/css"> 
+*{ 
 
 
-    </head>
-    <body>
+    font-family: 'adobe-clean', serif;
 
-        <!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar -->
-        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="container">
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Find a cat</a></li>
-                        <li><a href="jsonindex.html">What's a JSON</a></li>
-                        <li><a href="jqueryindex.html">jQuery for your mental health</a></li>                        
-                    </ul>
-                </div>
+    }
+</style>
+
+</head>
+<body onload="prettyPrint()">
+    
+    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="focus" href="#">Putting API Fears and Troubles to REST</a>
             </div>
-        </nav>
-
-        <!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron -->
-
-        <div class="jumbotron" style="padding-bottom:10px; margin-bottom: 10px;">
-            <div class="container" style="text-align:center;">
-                <h1>Find a Cat</h1>
-                <p>Scroll down to find the perfect cat!</p>
-            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            
+        </div>
+    </nav>
+    <div class="container" style="color: #231f20; font-size:18px;">
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="text-center" style="font-size:300%; color:#009FF4;">
+                Putting API Fears and Troubles to REST
+            </h1>         
         </div>
 
-        <div class="container">
-          <!-- Example row of columns -->
-            <div class="row" style="text-align:center; font-size:30px; padding:15px;">
-                <img id="img-goes-here" src="img/catHiding.jpg" style="width:90%; max-height: 440px; min-height:100px">
-                <br>
-            </div>
+        <div class="row">
 
-            <div class="row search-style">
-                <div id="search-append-here">
-                    <input id="search-goes-here" type="text" name="search" placeholder=" Search for cats."></input>                
-                    <button onclick="getCats();">Search</button>
-                    <br>
+            <div class="col-lg-12 center-block" >
+                <div style="padding-left:1%;">
+
+                    <div id="high-level-overview">
+                        <div id="start" class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>
+                        <h1>High-level Overview</h1>      
+
+                        <div>
+
+                        </div>
+
+                    </div>
+                    <script type="text/javascript">
+                        dropdown($('#start')[0], $('#start')[0].parentElement.id);                                            
+                    </script>
+
+                    <div id="how-they-work">
+                        <div class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>                
+                        <h1>How Do API's Work</h1> 
+                        <div class='textDiv center-block how-they-work'>
+
+                        </div>
+                                              
+                    </div>
+                    
+                    <div id="specific-api">
+                        <div id = "start" class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>           
+                        <h1>Specific API's We Will Be Using </h1>                                              
+                        <div class='textDiv center-block how-they-work'>
+
+                        </div>
+
+                    </div>                                        
+
+                    <div id="practice-json">
+                        <div class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>
+                        <h1>Practice With JSON</h1>                                                
+                    </div>                                        
+
+                    <div id="practice-with-native-js-http">
+                        <div class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>                
+                        <h1>Practice With Natice JS HTTP Request</h1>                                          
+                    </div>
+
+                    <div id="practice-jquery">
+                        <div class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>
+                        <h1>Practice With jQuery</h1>                                            
+                    </div>
+
+                    <div id="practice-jquery-http">
+                        <div class="triangle-right" onClick="dropdown(this, this.parentElement.id);"></div>
+                        <h1>Practice With jQuery HTTP Request</h1>                                            
+                    </div>
+
                 </div>
-            </div>    
 
-            <script type="text/javascript">
-
-                function getCats(){}// end getCats()    
-                
-            </script>
-
-            <div class="row save-style">
-                <div>
-                    <input id="save-under-this" type="text" name="SavePics" placeholder=" Give me a name!"></input>
-                    <button onclick="saveCats()">Save</button>
-                </div>
             </div>
+           
+        </div>
 
-            <script type="text/javascript">
-                
-                function saveCats(){}
+        <div class='row'>
+            <button type="button" class="btn-lg btn-success center-block" style='margin-top:10px;'><a href="" download="" style="color:white;">Download the practice files</a></button>
 
-            </script>
-
-            <div class="row load-style">
-                <div id="load-here">
-                    <input id="load-from-this" type="text" name="LoadCats" placeholder=" What was my name?"></input>
-                    <button id="button3" onclick="getSavedCats()">Load</button>
-                    <br>
-                </div>
+        </div>
+ 
+        <hr>
+        <div class="row">
+            <div class="center-block">
+                <footer>
+                </footer>
             </div>
-          
-            <script type="text/javascript">
-
-                function getSavedCats(){}
-
-            </script>
-
-            <hr>
-
-
-    <script type="text/javascript">
-    </script>
-
-
-	</body>
-
-
+        </div>
+    </div>
+</body>
 </html>

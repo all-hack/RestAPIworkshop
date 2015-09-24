@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Find a cat</title>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <style type="text/css">
+
+            .search-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:cadetblue; 
+                padding:15px;
+            }
+
+            .cat-img-style{
+                max-width:20%; 
+                max-height:150px; 
+                margin:10px; 
+                float:left;
+            }
+
+            .save-style{
+                font-size:30px; 
+                margin-top:15px; 
+                background-color:bisque; 
+                padding:15px;
+            }
+
+            .load-style{
+                font-size:30px;
+                margin-top:15px; 
+                background-color: wheat; 
+                padding:15px;
+            }
+
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar --><!-- nav bar -->
+        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Find a cat</a></li>
+                        <li><a href="jsonindex.html">What's a JSON</a></li>
+                        <li><a href="jqueryindex.html">jQuery for your mental health</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron --><!-- jumbotron -->
+
+        <div class="jumbotron" style="padding-bottom:10px; margin-bottom: 10px;">
+            <div class="container" style="text-align:center;">
+                <h1>Find a Cat</h1>
+                <p>Scroll down to find the perfect cat!</p>
+            </div>
+        </div>
+
+        <div class="container">
+          <!-- Example row of columns -->
+            <div class="row" style="text-align:center; font-size:30px; padding:15px;">
+                <img id="img-goes-here" src="img/catHiding.jpg" style="width:90%; max-height: 440px; min-height:100px">
+                <br>
+            </div>
+
+            <div class="row search-style">
+                <div id="search-append-here">
+                    <input id="search-goes-here" type="text" name="search" placeholder=" Search for cats."></input>                
+                    <button onclick="getCats();">Search</button>
+                    <br>
+                </div>
+            </div>    
+
+            <script type="text/javascript">
+
+                function getCats(){}// end getCats()    
+                
+            </script>
+
+            <div class="row save-style">
+                <div>
+                    <input id="save-under-this" type="text" name="SavePics" placeholder=" Give me a name!"></input>
+                    <button onclick="saveCats()">Save</button>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                
+                function saveCats(){}
+
+            </script>
+
+            <div class="row load-style">
+                <div id="load-here">
+                    <input id="load-from-this" type="text" name="LoadCats" placeholder=" What was my name?"></input>
+                    <button id="button3" onclick="getSavedCats()">Load</button>
+                    <br>
+                </div>
+            </div>
+          
+            <script type="text/javascript">
+
+                function getSavedCats(){}
+
+            </script>
+
+            <hr>
+
+
+    <script type="text/javascript">
+    </script>
+
+
+	</body>
+
+
+</html>

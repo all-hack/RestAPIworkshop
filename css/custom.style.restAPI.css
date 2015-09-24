@@ -1,0 +1,118 @@
+.toolTip{
+	/*color:red;*/
+	font-weight: bold;
+}
+
+.picTip, .picTip:hover, .picTip:focus{
+	text-decoration: inherit;
+	color: #FF0000;
+}
+
+.displayPic{
+
+	max-height: 350px;
+	max-width: 300px;
+	
+
+
+}
+
+#test{
+	background-color: black;
+	width:100px;
+	height: 30px;
+}
+
+.ui-tooltip{
+
+	max-height:400px;
+	max-width: 350px;
+
+
+}
+
+pre {
+	margin-top: 5px;
+}
+
+.ui-tooltip-content{
+
+
+	padding: 5px;
+	color: black;
+	background-color: white;
+}
+
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 20px solid #FF0000;
+	border-bottom: 10px solid transparent;
+	display: inline-block;
+	float:left;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: .5%;
+	margin-right: 1%;
+}
+
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 20px solid #009FF4;
+	float:left;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: .5%;
+	margin-right: 1%;
+}
+
+
+#jumbotron{
+
+	color: rgba(194, 183, 183, 0.07);
+	padding-bottom: 8px;
+	padding-left: 4%;
+	padding-right: 4%;
+
+}
+
+#list0, #list1, #list2, #list8 {
+	margin-left: 2em;
+
+}
+
+#list3, #list4, #list5, #list6, #list7{
+	margin-left: 4em;
+}
+
+@media (min-width: 434px) {
+	h1, h2, h3, h4, h5{
+		/*text-align: left;*/
+	}
+}
+
+
+.b-red {
+
+	border-style: solid;
+	border-color: red;
+	text-align: center;
+}
+
+.b-black{
+
+	border-style: solid;
+	border-color: black;
+
+}
+
+.textDiv {
+	width: 90%;
+	font-size: 110%;
+	text-align: left;
+
+}
